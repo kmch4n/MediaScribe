@@ -27,10 +27,10 @@ GPU を使う場合は、`ctranslate2` が要求する CUDA / cuBLAS / cuDNN ラ
 python -m pip install -r requirements.txt
 ```
 
-開発用ツールも含めて入れる場合:
+`mediascribe` コマンドとして使いたい場合は、追加でパッケージとしてインストールします。
 
 ```bash
-python -m pip install -e ".[dev]"
+python -m pip install -e .
 ```
 
 ## 使い方
