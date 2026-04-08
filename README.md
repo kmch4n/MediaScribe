@@ -17,15 +17,36 @@ MediaScribe は、`faster-whisper` を使って音声ファイルや動画ファ
 
 - Python 3.10+
 
-GPU を使う場合は、`ctranslate2` が要求する CUDA / cuBLAS / cuDNN ランタイムが
-必要です。これらが見つからない環境では、MediaScribe は自動的に CPU 推論へ
-フォールバックします。
+## 重要
+
+CPU 実行は推奨しません。文字起こしにかなり時間がかかるため、実用上は
+GPU 環境での利用を前提にしてください。
+
+MediaScribe は CUDA ランタイムが見つからない場合に CPU へフォールバック
+しますが、これはあくまで非常用です。普段使いでは GPU を使う構成を推奨します。
 
 ## インストール
 
 ```bash
 python -m pip install -r requirements.txt
 ```
+
+## GPU 利用について
+
+`faster-whisper` は内部で `ctranslate2` を使います。GPU を使うには、Python
+パッケージを入れるだけでは不十分で、OS 側に CUDA / cuBLAS / cuDNN の実行時
+ライブラリが必要です。
+
+Windows で GPU を使う場合は、少なくとも `cublas64_12.dll` などの CUDA 12 系
+ランタイムが読み込める状態にしてください。
+
+CUDA ランタイムが不足していると、次のようなエラーが出ることがあります。
+
+```text
+Library cublas64_12.dll is not found or cannot be loaded
+```
+
+この場合、MediaScribe は CPU へフォールバックしますが、速度面では非推奨です。
 
 `mediascribe` コマンドとして使いたい場合は、追加でパッケージとしてインストールします。
 
