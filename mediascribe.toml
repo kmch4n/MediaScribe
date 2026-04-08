@@ -1,0 +1,44 @@
+# このファイルで既定値を設定できます。
+# CLI 引数を指定した場合は、設定ファイルの値より CLI 引数が優先されます。
+
+[transcribe]
+# Whisper モデル名。例: tiny, base, small, medium, large-v3
+model = "large-v3"
+
+# 言語コード。例: "ja", "en"。自動判定したい場合は空文字にするか項目を削除します。
+language = "ja"
+
+# 推論デバイス。代表例: auto, cpu, cuda(gpu)
+# auto で GPU ランタイムが見つからない場合は CPU にフォールバックします。
+device = "auto"
+
+# faster-whisper に渡す compute type。例: default, int8, float16
+compute_type = "default"
+
+# Beam search の幅。大きいほど精度が上がることがありますが遅くなります。
+beam_size = 5
+
+# 文字起こし時の chunk 長さ（秒）。
+chunk_length = 30
+
+# Decoding temperature。低いほど出力が安定しやすくなります。
+temperature = 0.0
+
+# VAD で無音とみなす最小時間（ミリ秒）。
+min_silence_ms = 500
+
+# Voice Activity Detection を有効にするかどうか。
+vad = true
+
+# 既存の出力ファイルを上書きするかどうか。
+overwrite = false
+
+# 出力形式。txt, srt, vtt, json を指定できます。
+output_format = "txt"
+
+[logging]
+# 詳細ログを有効にするかどうか。
+verbose = false
+
+# ログファイルの出力先。コンソール出力だけでよければこの項目は削除可能です。
+log_file = "logs/mediascribe.log"
